@@ -18,7 +18,7 @@ const upload = multer({
 const middleware = require('../app/middleware/authenticate');
 
 
-router.get('/', productController.index)
+router.get('/',middleware.userAuth, productController.index)
 
 
 module.exports = router;
