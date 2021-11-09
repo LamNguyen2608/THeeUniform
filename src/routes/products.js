@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const productController = require('../app/controllers/ProductController');
-
+const middleware = require('../app/middleware/authenticate');
 //Multer for Update Image
 const storage = multer.diskStorage({
     destination:function(req, file, cb){
@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage:storage
 });
-const middleware = require('../app/middleware/authenticate');
 
 
 router.get('/',middleware.userAuth, productController.index)
